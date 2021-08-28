@@ -1,0 +1,159 @@
+/* header */
+
+header{
+    background-color: aquamarine;
+    padding: 0 0 90px 0;
+}
+
+nav{
+    display: flex;
+    justify-content: space-around;
+    padding: 35px 0;
+}
+
+nav div:last-child{
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+}
+
+nav a{
+    font-weight: 900;
+    text-decoration: none;
+    color: black;
+}
+
+
+
+.title{
+    background-color: tomato;
+    padding: 8%;
+    width: 40%;
+}
+
+
+@media (max-width: 600px) {
+    .title{
+        width: 100%;
+        padding: 25px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .title p{
+        padding: 20px;
+    }
+}
+  
+
+/* Human to Shark */
+
+.column-separator{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.items-separator{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.child-text{
+    width: 69%;
+}
+
+.child-image{
+    align-items: center;
+}
+
+.child-image img{
+    width: 50%;
+}
+
+.text-shark-human{
+    position: relative;
+    left: 35%;
+}
+
+/* Telegram bot */
+.telegram-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.telegram-container img{
+    width: 50%;
+}
+
+.telegram-container p{
+    padding: 0 20%;
+}
+
+/* General */
+
+.myButton {
+	background-color:cornflowerblue;
+	border-radius:28px;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:17px;
+	padding:15px 43px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #2f6627;
+}
+.myButton:hover {
+	background-color:#5cbf2a;
+}
+.myButton:active {
+	position:relative;
+	top:1px;
+}
+
+.title h1{
+    font-size:90px;
+    margin: 0;
+}
+
+a,p{
+    font-family: 'Roboto', sans-serif;
+}
+
+h1,h2,h3,h4,h5{
+    font-family: 'Raleway', sans-serif;
+}
+
+h2{
+    font-size: 60px;
+    margin: 0;
+}
+
+/* Particles */
+
+/* #particles-js{
+    position: relative;
+    height: 159vh;
+    top: -1499px;
+    z-index: -1;
+} */
+
+#particles-js {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+main{
+    position: relative;
+}
+
+main section{
+    position: relative;
+    z-index: 1;
+    background-color: transparent;
+}
