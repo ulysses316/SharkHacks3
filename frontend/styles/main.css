@@ -1,13 +1,17 @@
 /* header */
 
 header{
-    background-color: aquamarine;
+    background:url("../img/background.png");
     padding: 0 0 90px 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    filter: brightness(.7);
 }
 
 nav{
     display: flex;
     justify-content: space-around;
+    align-items: center;
     padding: 35px 0;
 }
 
@@ -20,17 +24,24 @@ nav div:last-child{
 nav a{
     font-weight: 900;
     text-decoration: none;
-    color: black;
+    color: white;
 }
-
 
 
 .title{
-    background-color: tomato;
     padding: 8%;
     width: 40%;
+    color: white;
 }
   
+
+.mobile-menu{
+    display: none !important;
+}
+
+.mobile-menu img{
+    width: 30px;
+}
 
 /* Human to Shark */
 
@@ -83,6 +94,7 @@ main section{
     padding: 0 20%;
 }
 
+
 /* Mobile */
 
 @media (max-width: 600px) {
@@ -96,6 +108,7 @@ main section{
     }
     .title p{
         padding: 20px;
+        text-align: center;
     }
 
     /* Talk sections */
@@ -121,6 +134,22 @@ main section{
 
     .child-image{
         order: -1;
+    }
+
+    .child-image img{
+        width: 80%;
+    }
+
+    .menu{
+        display: none;
+    }
+    .mobile-menu{
+        display: inherit !important;
+    }
+
+    nav div{
+        width: 100% !important;
+        text-align: center;
     }
 }
 
@@ -177,12 +206,6 @@ h2{
 
 /* Particles */
 
-/* #particles-js{
-    position: relative;
-    height: 159vh;
-    top: -1499px;
-    z-index: -1;
-} */
 
 #particles-js {
     position: absolute;
