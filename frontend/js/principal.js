@@ -12,6 +12,7 @@ let eleven =document.querySelector(".once");
 let btn = document.querySelectorAll(".btn-s");
 
 let btn_shark = document.getElementById("shark-btn");
+let btn_human = document.getElementById("btn-persona");
 
 /*
 humano - rawrarawraw
@@ -38,4 +39,23 @@ function cambiaTextoTiburon(){
 
 }   
 
+function cambiaTextoHumano(){
+    one.text = "human";
+    two.text = "shark";
+    three.text = "telegram";
+    four.innerHTML = "Talk with a shark";
+    five.innerHTML = "lorem";
+    six.innerHTML = "Traduce de humano a tiburon.";
+    seven.innerHTML = "lorem";
+    eight.innerHTML= "Traduce de tiburon a humano.";
+    nine.innerHTML = "lorem";
+    ten.innerHTML = "Prueba nuestro bot de telegram";
+    eleven.innerHTML ="lorem";
+    btn[0].innerHTML = "talk!";
+    btn[1].innerHTML = "talk!";
+    btn[2].innerHTML = "talk!";
+    btn[3].innerHTML = "talk!";
+}
 btn_shark.addEventListener("click", cambiaTextoTiburon);
+btn_human.addEventListener("click", cambiaTextoHumano);
+
