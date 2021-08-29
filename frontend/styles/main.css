@@ -44,8 +44,11 @@ nav a{
 }
 
 /* Human to Shark */
-
+section{
+    margin-bottom: 50px;
+}
 .column-separator{
+    padding-top: 30px;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
@@ -57,7 +60,8 @@ nav a{
 }
 
 .child-text{
-    width: 69%;
+    width: 75%;
+    text-align: center;
 }
 
 .child-image{
@@ -79,6 +83,7 @@ main section{
 
 /* Telegram bot */
 .telegram-container{
+    padding-bottom: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
