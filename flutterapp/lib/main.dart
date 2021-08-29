@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:talk_with_a_shark/home.dart';
+import 'package:talk_with_a_shark/home/home.dart';
 
 void main() {
   runApp(MyApp());
