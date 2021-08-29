@@ -214,7 +214,7 @@ h2{
 
 #particles-js {
     position: absolute;
-    height: 100%;
+    height: 119%;
     width: 100%;
   }
 
@@ -234,4 +234,20 @@ main section{
 
 .record-section{
     height: 100%;
+}
+
+.titulo-audio-original{
+    display: none;
+}
+
+.titulo-audio-convertido{
+    display: none;
+}
+
+.audios-section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
 }
