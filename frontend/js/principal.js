@@ -26,7 +26,7 @@ function cambiaTextoTiburon(){
     three.text = "rawrarawrararaw";
     four.innerHTML = "Rawrawrara rawra rawrawrararaw ";
     five.innerHTML = "raw rawra rawrawrawrawrraw ra ra raw raw raw raw raw ra rarara raw rawraw rawra rawrawrawrawrraw ra ra raw raw raw raw rawraw raw";
-    six?.innerHTML = "rawraw raw rawrarawraw rara rawrawrararaw ";
+    six.innerHTML = "rawraw raw rawrarawraw rara rawrawrararaw ";
     seven.innerHTML = "rawrawrawraw raw rawra rawraw rawra raw rawraraw raw rawrarawraw rawraraw rawrawraraw raw rawrararawrarawrawrararawraraw rawrarararara";
     eight.innerHTML= "rawraw raw rawrawrararaw rararawrarawraw";
     nine.innerHTML = "rawrarara raw rawrara rawra rawraw raw rawraraw raw rawrarawraw rawrarawrawrarara rawrawrararawrarawrawrara rawrarararara";
