@@ -8,7 +8,12 @@ let sendData = (audioArchive, url) =>{
   })
   .then(response => response.json())
   .catch(error => console.error('Error:', error))
-  .then(response => console.log("Success:", response))
+  .then(response => {
+    console.log("Success:", response)
+    document.querySelector(".convert-audio").src=response.audio;
+    document.querySelector(".convert-audio").controls=true;
+    document.querySelector(".titulo-audio-convertido").style.display = "block"
+  })
 }
 
 
@@ -28,7 +33,7 @@ const recordAudio = () =>
       new Promise(resolve => {
         mediaRecorder.addEventListener("stop", () => {
           const audioBlob = new Blob(audioChunks,{ type: 'audio/mpeg-3' });
-          // sendData(audioBlob)
+          sendData(audioBlob, "https://sharkend.herokuapp.com/translate/")
           const audioUrl = URL.createObjectURL(audioBlob); 
           const audio = new Audio(audioUrl);
           const play = () => audio.play();
