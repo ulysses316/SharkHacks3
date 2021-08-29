@@ -12,6 +12,12 @@ import 'package:talk_with_a_shark/home/home_bottom_navigation.dart';
 // Record
 import 'package:just_audio/just_audio.dart' as ap;
 
+// Http
+import 'package:http/http.dart' as http;
+
+// Loading button
+import 'package:rounded_loading_button/rounded_loading_button.dart';
+
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -23,14 +29,58 @@ class _HomeState extends State<Home> {
   int _optionSelected = TYPE_HUMAN_TO_SHARK;
 
   bool _showPlayer = false;
+  String? _path;
   ap.AudioSource? _audioSource;
   int _recordDuration = 0;
+
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
 
   void _onRecordFinished(String path) {
     setState(() {
       _audioSource = ap.AudioSource.uri(Uri.parse(path));
       _showPlayer = true;
+      _path = path;
     });
+  }
+
+  void _sendFile() async {
+    final request = http.MultipartRequest(
+        'POST', Uri.parse('https://mamiquetuquiereaquillegotutiburon.com/'));
+    request.files.add(await http.MultipartFile.fromPath('audio', _path!));
+
+    try {
+      final response = await request.send();
+
+      if (response.statusCode == 200) {
+        // If the server did return a 200 OK response,
+        // then parse the JSON.
+        _btnController.reset();
+      } else {
+        // If the server did not return a 200 OK response,
+        // then throw an exception.
+        throw Exception('Valio verga jente');
+      }
+    } catch (e) {
+      _btnController.reset();
+      print(e);
+      showDialog<void>(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Server error'),
+              content: Text('Please retry later.'),
+              actions: <Widget>[
+                TextButton(
+                  child: const Text('Ok'),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          });
+    }
   }
 
   Widget _buildTimer() {
@@ -65,14 +115,28 @@ class _HomeState extends State<Home> {
       body: _showPlayer
           ? Padding(
               padding: EdgeInsets.symmetric(horizontal: 25),
-              child: AudioPlayer(
-                source: _audioSource!,
-                onDelete: () {
-                  setState(() {
-                    _showPlayer = false;
-                    _recordDuration = 0;
-                  });
-                },
+              child: Column(
+                children: [
+                  AudioPlayer(
+                    source: _audioSource!,
+                    onDelete: () {
+                      setState(() {
+                        _showPlayer = false;
+                        _recordDuration = 0;
+                      });
+                    },
+                  ),
+                  Container(
+                      margin: EdgeInsets.only(top: 24),
+                      child: Align(
+                          alignment: Alignment.center,
+                          child: RoundedLoadingButton(
+                            child: Text('Send',
+                                style: TextStyle(color: Colors.white)),
+                            controller: _btnController,
+                            onPressed: _sendFile,
+                          )))
+                ],
               ),
             )
           : Column(
@@ -105,7 +169,7 @@ class _HomeState extends State<Home> {
                       alignment: Alignment.center,
                       child:
                           Image(image: AssetImage('assets/images/shark.png'))),
-                )
+                ),
               ],
             ),
       floatingActionButton: HomeFloatingButton(
