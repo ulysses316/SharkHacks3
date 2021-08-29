@@ -1,6 +1,10 @@
 // Flutter
 import "package:flutter/material.dart";
 import 'package:talk_with_a_shark/home/home_floating_button.dart';
+import 'dart:developer';
+import 'dart:convert' as convert;
+import 'dart:io';
+import 'package:flutter/foundation.dart';
 
 // Shared
 import 'package:talk_with_a_shark/shared/audio_player.dart';
@@ -17,6 +21,7 @@ import 'package:http/http.dart' as http;
 
 // Loading button
 import 'package:rounded_loading_button/rounded_loading_button.dart';
+import 'package:path_provider/path_provider.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -46,30 +51,69 @@ class _HomeState extends State<Home> {
 
   void _sendFile() async {
     final request = http.MultipartRequest(
-        'POST', Uri.parse('https://mamiquetuquiereaquillegotutiburon.com/'));
+        'POST', Uri.parse('https://sharkend.herokuapp.com/translate/'));
     request.files.add(await http.MultipartFile.fromPath('audio', _path!));
 
     try {
       final response = await request.send();
-
+      _btnController.reset();
       if (response.statusCode == 200) {
         // If the server did return a 200 OK response,
         // then parse the JSON.
-        _btnController.reset();
+        final directory = await getTemporaryDirectory();
+        final tempPath = '${directory.path}/translation';
+        final tempFile = File(tempPath);
+        final bytes = await response.stream.toBytes();
+        await tempFile.writeAsBytes(bytes);
+        log(tempPath);
+        debugPrint(tempPath);
+        _audioSource = ap.AudioSource.uri(Uri.parse(tempPath));
+        showDialog<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Traslation succeed'),
+                content: Text('Press play button'),
+                actions: <Widget>[
+                  TextButton(
+                    child: const Text('Ok'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            });
       } else {
         // If the server did not return a 200 OK response,
         // then throw an exception.
-        throw Exception('Valio verga jente');
+        showDialog<void>(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: const Text('Request error'),
+                content: Text(response.reasonPhrase!),
+                actions: <Widget>[
+                  TextButton(
+                    child: const Text('Ok'),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            });
       }
     } catch (e) {
       _btnController.reset();
-      print(e);
+      print(e.toString());
+      log(e.toString());
       showDialog<void>(
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
               title: const Text('Server error'),
-              content: Text('Please retry later.'),
+              content: Text(e.toString()),
               actions: <Widget>[
                 TextButton(
                   child: const Text('Ok'),
