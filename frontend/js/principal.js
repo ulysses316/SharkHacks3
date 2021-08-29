@@ -8,7 +8,6 @@ let seven =document.querySelector(".siete");
 let eight =document.querySelector(".ocho");
 let nine =document.querySelector(".nueve");
 let ten =document.querySelector(".diez");
-let eleven =document.querySelector(".once");
 let btn = document.querySelectorAll(".btn-s");
 
 let btn_shark = document.getElementById("shark-btn");
@@ -27,11 +26,8 @@ function cambiaTextoTiburon(){
     four.innerHTML = "Rawrawrara rawra rawrawrararaw ";
     five.innerHTML = "raw rawra rawrawrawrawrraw ra ra raw raw raw raw raw ra rarara raw rawraw rawra rawrawrawrawrraw ra ra raw raw raw raw rawraw raw";
     six.innerHTML = "rawraw raw rawrarawraw rara rawrawrararaw ";
-    seven.innerHTML = "rawrawrawraw raw rawra rawraw rawra raw rawraraw raw rawrarawraw rawraraw rawrawraraw raw rawrararawrarawrawrararawraraw rawrarararara";
     eight.innerHTML= "rawraw raw rawrawrararaw rararawrarawraw";
-    nine.innerHTML = "rawrarara raw rawrara rawra rawraw raw rawraraw raw rawrarawraw rawrarawrawrarara rawrawrararawrarawrawrara rawrarararara";
     ten.innerHTML = "rawra rawrarara ra rawrarawrararaw";
-    eleven.innerHTML ="rawrarara raw rawrara rawra rawraw raw rawraraw raw rawrarawraw rawrarawrawrarara rawrawrararawrarawrawrara rawrararawrawrawraw rawraw raw rwawaraw";
     btn[0].innerHTML = "rawrawrawara";
     btn[1].innerHTML = "rawrawrawara";
     btn[2].innerHTML = "rawrawrawara";
@@ -44,17 +40,14 @@ function cambiaTextoHumano(){
     two.text = "shark";
     three.text = "telegram";
     four.innerHTML = "Talk with a shark";
-    five.innerHTML = "lorem";
-    six.innerHTML = "Traduce de humano a tiburon.";
-    seven.innerHTML = "lorem";
-    eight.innerHTML= "Traduce de tiburon a humano.";
-    nine.innerHTML = "lorem";
-    ten.innerHTML = "Prueba nuestro bot de telegram";
-    eleven.innerHTML ="lorem";
+    five.innerHTML = "Are you tired of not understanding your shark friend. Don't worry! We created an app that will allow you to communicate with your friend. It's a shark-translator. Just record a voice note and we will translate it to shark. And there's more. Also, a shark will be able to translate to human what  they is trying to say. ";
+    six.innerHTML = "Translate from human a shark.";
+    eight.innerHTML= "Translate from shark to human.";
+    ten.innerHTML = "Try our android app";
     btn[0].innerHTML = "talk!";
     btn[1].innerHTML = "talk!";
     btn[2].innerHTML = "talk!";
-    btn[3].innerHTML = "talk!";
+    btn[3].innerHTML = "Try it!";
 }
 btn_shark.addEventListener("click", cambiaTextoTiburon);
 btn_human.addEventListener("click", cambiaTextoHumano);
